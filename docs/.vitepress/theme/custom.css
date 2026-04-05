@@ -1,0 +1,376 @@
+:root {
+  --vp-font-family-base: "Noto Sans SC", "Microsoft YaHei", "PingFang SC", sans-serif;
+  --vp-font-family-mono: "JetBrains Mono", "Consolas", "Menlo", monospace;
+
+  --vp-c-brand-1: #5f8f2f;
+  --vp-c-brand-2: #7aa93a;
+  --vp-c-brand-3: #43671f;
+  --vp-c-brand-soft: rgba(95, 143, 47, 0.2);
+
+  --vp-c-bg: #fcfaf3;
+  --vp-c-bg-alt: #f3eedf;
+  --vp-c-bg-elv: #fffdf8;
+
+  --vp-c-text-1: #1e2a1c;
+  --vp-c-text-2: #4f5d4b;
+
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(112deg, #466f24 8%, #c57c1d 44%, #246987 90%);
+  --vp-home-hero-image-background-image: radial-gradient(circle at 50% 50%, rgba(197, 124, 29, 0.45), rgba(95, 143, 47, 0.14));
+  --vp-home-hero-image-filter: drop-shadow(0 20px 50px rgba(42, 61, 30, 0.3));
+}
+
+.dark {
+  --vp-c-brand-1: #9bc760;
+  --vp-c-brand-2: #b7dd7a;
+  --vp-c-brand-3: #7ba447;
+  --vp-c-brand-soft: rgba(155, 199, 96, 0.2);
+
+  --vp-c-bg: #181e14;
+  --vp-c-bg-alt: #202919;
+  --vp-c-bg-elv: #232d1b;
+
+  --vp-c-text-1: #edf4e8;
+  --vp-c-text-2: #b8c8b4;
+
+  --vp-home-hero-name-background: linear-gradient(112deg, #9bc760 8%, #f4be6a 44%, #8fd2ea 90%);
+}
+
+.VPNavBar {
+  backdrop-filter: blur(10px);
+  background: color-mix(in srgb, var(--vp-c-bg) 78%, transparent);
+}
+
+.VPHome {
+  position: relative;
+  overflow-x: clip;
+  background:
+    radial-gradient(1200px 640px at -8% -20%, rgba(245, 180, 63, 0.23), transparent 62%),
+    radial-gradient(960px 540px at 108% -14%, rgba(36, 105, 135, 0.2), transparent 56%),
+    linear-gradient(180deg, #fcfaf3 0%, #f7f2e4 48%, #ecf4e7 100%);
+}
+
+.dark .VPHome {
+  background:
+    radial-gradient(1100px 620px at -8% -20%, rgba(155, 199, 96, 0.13), transparent 62%),
+    radial-gradient(900px 520px at 108% -14%, rgba(79, 166, 201, 0.16), transparent 56%),
+    linear-gradient(180deg, #181e14 0%, #1d2617 48%, #17231d 100%);
+}
+
+.VPHome::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(30, 42, 28, 0.05) 0 1px, transparent 1px 28px),
+    repeating-linear-gradient(90deg, rgba(30, 42, 28, 0.05) 0 1px, transparent 1px 28px);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent 74%);
+  pointer-events: none;
+}
+
+.dark .VPHome::before {
+  background-image:
+    repeating-linear-gradient(0deg, rgba(237, 244, 232, 0.05) 0 1px, transparent 1px 28px),
+    repeating-linear-gradient(90deg, rgba(237, 244, 232, 0.05) 0 1px, transparent 1px 28px);
+}
+
+.VPHero .name {
+  font-family: "Ma Shan Zheng", "Noto Sans SC", cursive;
+  font-size: clamp(3rem, 7.2vw, 5.8rem);
+  line-height: 1.06;
+  letter-spacing: 0.02em;
+  animation: riseIn 0.72s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.VPHero .text {
+  font-size: clamp(1.45rem, 3.2vw, 2.45rem);
+  line-height: 1.15;
+  max-width: 15ch;
+  animation: riseIn 0.72s 0.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.VPHero .tagline {
+  max-width: 560px;
+  font-size: 1.05rem;
+  line-height: 1.72;
+  animation: riseIn 0.72s 0.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.VPHero .image-container {
+  border-radius: 26px;
+  transform: rotate(-4deg);
+  transition: transform 0.45s ease;
+}
+
+.VPHero .image-container:hover {
+  transform: rotate(-2deg) translateY(-4px);
+}
+
+.VPHero .image {
+  animation: floatingCube 5.6s ease-in-out infinite;
+}
+
+.VPHero .actions {
+  gap: 12px;
+}
+
+.VPHero .actions .VPButton {
+  border-radius: 999px;
+  padding: 0 22px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  opacity: 0;
+  animation: riseIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.VPHero .actions .VPButton.brand {
+  animation-delay: 0.26s;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: linear-gradient(120deg, #4f7e2a 0%, #739f34 55%, #5a8fce 100%);
+  box-shadow: 0 10px 24px rgba(58, 88, 32, 0.34);
+}
+
+.VPHero .actions .VPButton.alt {
+  animation-delay: 0.34s;
+  border: 1px solid rgba(67, 103, 31, 0.3);
+  background: color-mix(in srgb, var(--vp-c-bg-elv) 90%, #f1e4bf);
+}
+
+.dark .VPHero .actions .VPButton.alt {
+  border-color: rgba(183, 221, 122, 0.3);
+  background: color-mix(in srgb, var(--vp-c-bg-elv) 86%, #38492a);
+}
+
+.VPFeatures {
+  padding-top: 20px;
+}
+
+.VPFeatures .item {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: featureIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.VPFeatures .item:nth-child(1) {
+  animation-delay: 0.08s;
+}
+
+.VPFeatures .item:nth-child(2) {
+  animation-delay: 0.16s;
+}
+
+.VPFeatures .item:nth-child(3) {
+  animation-delay: 0.24s;
+}
+
+.VPFeatures .item:nth-child(4) {
+  animation-delay: 0.32s;
+}
+
+.VPFeatures .item .box {
+  border-radius: 24px;
+  border: 1px solid rgba(79, 108, 47, 0.2);
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.9), rgba(246, 239, 224, 0.84));
+  box-shadow: 0 18px 42px rgba(36, 56, 24, 0.11);
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.dark .VPFeatures .item .box {
+  border-color: rgba(176, 212, 125, 0.2);
+  background: linear-gradient(150deg, rgba(38, 47, 30, 0.9), rgba(29, 37, 24, 0.84));
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.3);
+}
+
+.VPFeatures .item .box:hover {
+  transform: translateY(-6px);
+  border-color: rgba(95, 143, 47, 0.46);
+  box-shadow: 0 24px 44px rgba(45, 67, 30, 0.2);
+}
+
+.home-intro-note {
+  margin: 28px auto 14px;
+  max-width: 1152px;
+  padding: 26px clamp(18px, 4vw, 34px);
+  border-radius: 24px;
+  border: 1px solid rgba(76, 106, 45, 0.22);
+  background: linear-gradient(140deg, rgba(255, 255, 255, 0.86), rgba(245, 237, 220, 0.82));
+  box-shadow: 0 16px 38px rgba(35, 58, 21, 0.12);
+}
+
+.dark .home-intro-note {
+  border-color: rgba(176, 212, 125, 0.2);
+  background: linear-gradient(140deg, rgba(39, 48, 31, 0.86), rgba(30, 40, 25, 0.82));
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.28);
+}
+
+.home-intro-note h2 {
+  margin: 0;
+  font-size: clamp(1.4rem, 2.8vw, 1.95rem);
+}
+
+.home-intro-note p {
+  margin: 12px 0 0;
+  line-height: 1.8;
+  color: var(--vp-c-text-2);
+}
+
+.quote-wall {
+  margin: 18px auto 56px;
+  max-width: 1152px;
+}
+
+.quote-wall > h2 {
+  margin: 0 0 14px;
+  font-size: clamp(1.3rem, 2.7vw, 1.85rem);
+}
+
+.quote-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.quote-card {
+  position: relative;
+  margin: 0;
+  border-radius: 18px;
+  border: 1px solid rgba(83, 115, 53, 0.18);
+  background: color-mix(in srgb, var(--vp-c-bg-elv) 88%, #fff2cb);
+  padding: 18px 16px 14px;
+  box-shadow: 0 10px 24px rgba(48, 74, 30, 0.08);
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+.quote-card::before {
+  content: "\201C";
+  position: absolute;
+  top: 6px;
+  right: 12px;
+  font-size: 2.8rem;
+  line-height: 1;
+  color: color-mix(in srgb, var(--vp-c-brand-1) 46%, transparent);
+}
+
+.dark .quote-card {
+  border-color: rgba(176, 212, 125, 0.2);
+  background: color-mix(in srgb, var(--vp-c-bg-elv) 82%, #2e3d24);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+}
+
+.quote-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(95, 143, 47, 0.45);
+  box-shadow: 0 16px 28px rgba(49, 76, 30, 0.18);
+}
+
+.quote-card p {
+  margin: 0;
+  line-height: 1.75;
+}
+
+.quote-card cite {
+  display: block;
+  margin-top: 10px;
+  font-style: normal;
+  font-size: 0.88rem;
+  color: var(--vp-c-text-2);
+}
+
+.transition-colors {
+  transition: color 0.25s ease;
+}
+
+.hover\:text-secondary:hover {
+  color: var(--vp-c-brand-1);
+}
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes featureIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes floatingCube {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@media (max-width: 960px) {
+  .VPHero .image-container {
+    transform: rotate(-2deg);
+  }
+
+  .quote-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .VPHero .name {
+    font-size: clamp(2.6rem, 12vw, 4rem);
+  }
+
+  .VPHero .tagline {
+    font-size: 0.98rem;
+  }
+
+  .VPHero .actions {
+    width: 100%;
+  }
+
+  .VPHero .actions .VPButton {
+    justify-content: center;
+    width: calc(50% - 6px);
+    min-width: 142px;
+  }
+
+  .home-intro-note {
+    margin-top: 22px;
+    border-radius: 20px;
+  }
+
+  .quote-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .VPHero .name,
+  .VPHero .text,
+  .VPHero .tagline,
+  .VPHero .actions .VPButton,
+  .VPHero .image,
+  .VPFeatures .item {
+    animation: none !important;
+  }
+
+  .VPHero .image-container,
+  .VPFeatures .item .box,
+  .quote-card {
+    transition: none !important;
+  }
+}
